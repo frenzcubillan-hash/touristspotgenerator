@@ -22,23 +22,15 @@ export default function Explore() {
 
   return (
     <main className="min-h-screen bg-gray-100">
-
       <div className="mx-auto max-w-6xl px-6 py-10">
-
-        <h1 className="text-4xl font-bold">
-          Plan Your Trip
-        </h1>
+        <h1 className="text-4xl font-bold">Plan Your Trip</h1>
 
         <ProgressBar step={step} />
 
         {/* STEP 1 */}
-
         {step === 1 && (
-
           <div className="mt-8 grid gap-5 md:grid-cols-2">
-
             {CONTINENTS.map((item) => (
-
               <StepCard
                 key={item}
                 onClick={() => {
@@ -46,23 +38,15 @@ export default function Explore() {
                   setStep(2);
                 }}
               >
-                <h2 className="text-xl font-semibold">
-                  {item}
-                </h2>
+                <h2 className="text-xl font-semibold">{item}</h2>
               </StepCard>
-
             ))}
-
           </div>
-
         )}
 
         {/* STEP 2 */}
-
         {step === 2 && (
-
           <>
-
             <button
               className="mb-8 text-sm text-gray-500"
               onClick={() => setStep(1)}
@@ -71,9 +55,7 @@ export default function Explore() {
             </button>
 
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-
               {(COUNTRIES[continent] ?? []).map((item) => (
-
                 <StepCard
                   key={item}
                   onClick={() => {
@@ -81,25 +63,16 @@ export default function Explore() {
                     setStep(3);
                   }}
                 >
-                  <h2 className="text-lg font-semibold">
-                    {item}
-                  </h2>
+                  <h2 className="text-lg font-semibold">{item}</h2>
                 </StepCard>
-
               ))}
-
             </div>
-
           </>
-
         )}
 
         {/* STEP 3 */}
-
         {step === 3 && (
-
           <>
-
             <button
               className="mb-8 text-sm text-gray-500"
               onClick={() => setStep(2)}
@@ -108,42 +81,33 @@ export default function Explore() {
             </button>
 
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-
               {CATEGORIES.map((item) => (
-
                 <StepCard
                   key={item}
                   onClick={() => setCategory(item)}
                 >
-                  <h2 className="text-lg font-semibold">
-                    {item}
-                  </h2>
+                  <h2 className="text-lg font-semibold">{item}</h2>
                 </StepCard>
-
               ))}
-
             </div>
 
-            <div className="mt-10">
-
-              <PrimaryButton
-                onClick={() =>
-                  router.push(
-                    `/result?continent=${continent}&country=${country}&category=${category}`
-                  )
-                }
-              >
-                Generate Destination
-              </PrimaryButton>
-
-            </div>
-
+            {/* FIX: only show button when category is selected */}
+            {category && (
+              <div className="mt-10">
+                <PrimaryButton
+                  onClick={() =>
+                    router.push(
+                      `/result?country=${country}&category=${category}`
+                    )
+                  }
+                >
+                  Generate Destination
+                </PrimaryButton>
+              </div>
+            )}
           </>
-
         )}
-
       </div>
-
     </main>
   );
 }

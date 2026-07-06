@@ -1,21 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 
 export default function Result() {
-  const params = useSearchParams();
-
-  const country = params.get("country");
-  const category = params.get("category");
-
   const [loading, setLoading] = useState(true);
   const [places, setPlaces] = useState([]);
+  const [country, setCountry] = useState("");
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    const c = params.get("country");
+    const cat = params.get("category");
+
+    setCountry(c || "");
+    setCategory(cat || "");
+
     async function load() {
+      if (!c || !cat) return;
+
       const res = await fetch(
-        `/api/places?country=${country}&category=${category}`
+        `/api/places?country=${c}&category=${cat}`
       );
 
       const json = await res.json();
@@ -25,7 +31,7 @@ export default function Result() {
     }
 
     load();
-  }, [country, category]);
+  }, []);
 
   if (loading) {
     return (
@@ -37,11 +43,16 @@ export default function Result() {
 
   return (
     <main className="min-h-screen bg-gray-100">
+
       <div className="mx-auto max-w-6xl px-6 py-10">
 
-        <h1 className="mb-10 text-5xl font-bold">
+        <h1 className="mb-2 text-5xl font-bold">
           {country}
         </h1>
+
+        <p className="mb-10 text-gray-500">
+          Explore {category} spots
+        </p>
 
         {places.length === 0 ? (
           <p className="text-gray-500">
@@ -63,7 +74,6 @@ export default function Result() {
                 "
               >
 
-                {/* IMAGE HANDLING FIX */}
                 {place.image ? (
                   <img
                     src={place.image}
@@ -79,7 +89,6 @@ export default function Result() {
                   </div>
                 )}
 
-                {/* CONTENT */}
                 <div className="p-5">
                   <h2 className="text-xl font-bold">
                     {place.name}
