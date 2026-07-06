@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌍 Tourist Spot Generator
+link: https://touristspotgenerator-tau.vercel.app/
 
-## Getting Started
+A simple travel discovery web app that helps users explore amazing tourist destinations around the world based on continent, country, and category.
 
-First, run the development server:
+I built this project to make travel exploration fun, interactive, and easy to understand for everyone — even without technical knowledge.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# ✨ Inspiration
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+I got the idea from platforms like Airbnb and travel websites where users can explore places visually.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I wanted to create something similar but simpler — where users can:
 
-## Learn More
+🌎 Choose a continent  
+🇯🇵 Pick a country  
+🏖️ Select a travel type (Nature, Beach, City, etc.)  
+📍 Then instantly discover real places they can visit  
 
-To learn more about Next.js, take a look at the following resources:
+My goal was to build a beginner-friendly travel explorer that feels interactive but stays lightweight and easy to deploy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 🛠️ Tools & Languages Used
 
-## Deploy on Vercel
+I used the following tools to build this project:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+💻 **Languages**
+- JavaScript (ES6)
+- HTML
+- CSS (Tailwind-inspired styling)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⚙️ **Framework**
+- Next.js (App Router)
+
+⚛️ **Library**
+- React
+
+🎨 **Styling**
+- Tailwind CSS
+
+---
+
+# 🌐 APIs Used
+
+## 🗺️ OpenTripMap API
+I used OpenTripMap to fetch real-world tourist locations.
+
+It provides:
+- 📍 Place names
+- 🌍 Geographic coordinates
+- 🧭 Nearby attractions
+
+Example endpoint:
+
+
+---
+
+## 📸 Wikipedia REST API
+I used Wikipedia’s API to get real images of famous places.
+
+This helps ensure:
+- 🏔️ Real landmark photos (like Mount Fuji, Eiffel Tower, etc.)
+- 🖼️ More accurate visual representation of destinations
+
+Example endpoint:
+
+
+---
+
+# 💡 How It Works
+
+I designed the system in a simple flow:
+
+🌍 Continent  
+⬇️  
+🇨🇳 Country  
+⬇️  
+🏖️ Category (Nature, Beach, City, etc.)  
+⬇️  
+📡 API request (only when all selections are complete)  
+⬇️  
+📍 Real tourist spots + images  
+⬇️  
+🎨 Display in a clean Airbnb-style UI  
+
+---
+
+# 🚀 Features
+
+✨ Simple and clean UI  
+🌎 Multi-step destination filtering  
+📸 Real place images (Wikipedia API)  
+📍 Live tourist spot data (OpenTripMap)  
+🎯 Category-based recommendations  
+📱 Fully responsive design  
+⚡ Fast Next.js API routing  
+
+---
+
+# 📌 Implications / What I Learned
+
+While building this project, I learned a lot about:
+
+🧠 API integration and data filtering  
+⚙️ How backend API routes work in Next.js  
+🎨 Creating clean UI layouts using Tailwind CSS  
+📡 Handling real-world data inconsistencies  
+🚫 Dealing with missing images and fallback strategies  
+
+I also realized that:
+
+- Not all APIs are perfectly reliable for production use  
+- Combining multiple APIs is often necessary  
+- Clean UI is just as important as backend logic  
+- Simple projects can still feel powerful when designed well  
+
+---
+
+# 🌱 Future Improvements
+
+If I continue this project, I want to add:
+
+🗺️ Google Maps integration  
+❤️ Save favorite destinations (local storage)  
+🔎 Better search and filtering system  
+📸 More accurate image mapping per landmark  
+🌐 Deployment polish for portfolio use  
+
+---
+
+# 📍 Final Note
+
+This project is part of my learning journey in web development.
+
+I built it to improve my understanding of APIs, frontend design, and real-world application structure — and to create something fun that people can actually use.
